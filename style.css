@@ -11,6 +11,7 @@
     padding: 0;
 
     background-color: black;
+    color: white;
   }
   
   h1 {
@@ -30,9 +31,5 @@
     color: white;
   }
   
-  .movie-containers{
-    background-color: beige;
-    height: 50vh;
-    width: 95%;
-  }
+
   

@@ -1,5 +1,4 @@
 
-
 let fakeMoviesAPI = {
     "dates": {
         "maximum": "2023-06-05",
@@ -98,12 +97,24 @@ function generateCards(movieObject){
    avgContainer.appendChild(star)
    avgContainer.appendChild(rating)
 
-   document.body.appendChild(avgContainer)
+   // document.body.appendChild(avgContainer)
 
    // create the image
    let image = document.createElement('img')
    image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
-   document.body.insertBefore(image, avgContainer)
+   // document.body.insertBefore(image, avgContainer)
+
+   let name = document.createElement('div')
+   name.classList.add('name')
+   name.innerText = movieObject.original_title
+   // document.body.insertBefore(name, avgContainer.nextElementSibling) // like an insertAfter thing
+
+   let moviesContainer = document.createElement('section')
+   moviesContainer.classList.add('moviesContainer')
+   moviesContainer.appendChild(image)
+   moviesContainer.appendChild(avgContainer)
+   moviesContainer.appendChild(name)
+   document.body.appendChild(moviesContainer)
 
 }
 
