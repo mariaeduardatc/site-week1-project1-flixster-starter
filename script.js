@@ -77,3 +77,34 @@ let fakeMoviesAPI = {
 
 let firstMovie = fakeMoviesAPI.results[0]
 console.log()
+
+
+function generateCards(movieObject){
+    // create star emoji
+   let star = document.createElement('span')
+   star.classList.add('star')
+   let starContent = document.createTextNode("⭐️")
+   star.appendChild(starContent)
+
+   // create rating
+   let rating = document.createElement('span')
+   rating.classList.add('rating')
+   let ratingContent = document.createTextNode(movieObject.vote_average)
+   rating.appendChild(ratingContent)
+
+   // create div for rating card
+   let avgContainer = document.createElement('div')
+   avgContainer.classList.add('average')
+   avgContainer.appendChild(star)
+   avgContainer.appendChild(rating)
+
+   document.body.appendChild(avgContainer)
+
+   // create the image
+   let image = document.createElement('img')
+   image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
+   document.body.insertBefore(image, avgContainer)
+
+}
+
+generateCards(firstMovie)
