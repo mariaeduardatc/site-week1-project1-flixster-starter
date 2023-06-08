@@ -1,35 +1,51 @@
 
 * {
-    box-sizing: border-box;
-    margin: 0 auto;
-  }
-  
-  body {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
 
-    background-color: black;
-    color: white;
-  }
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  padding: 0;
+
+  background-color: white;
+  color: black;
+
+}
+
+h1 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+img{
+  border-radius: 10%;
+}
+
+header{
+  background-color: black;
+  height: 10vh;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 1vh;
+
+  color: white;
+}
+
+section{
+  margin-bottom: 2vh;
   
-  h1 {
-    text-transform: uppercase;
-    text-align: center;
-  }
+}
+
+#general-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/4)), 1fr));
   
-  header{
-    background-color: black;
-    height: 10vh;
-  
-    display: flex;
-    align-items: center;
-  
-    margin-bottom: 1vh;
-  
-    color: white;
-  }
-  
+
+  margin: 25px;
+}
 
   
