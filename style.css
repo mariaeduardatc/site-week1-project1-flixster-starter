@@ -16,17 +16,8 @@ body {
 
 }
 
-h1 {
-  text-transform: uppercase;
-  text-align: center;
-}
-
-img{
-  border-radius: 20px;
-}
-
 header{
-  background-color: black;
+  background-color: white;
   height: 10vh;
 
   display: flex;
@@ -34,8 +25,24 @@ header{
 
   margin-bottom: 1vh;
 
-  color: white;
+  color: black;
 }
+
+
+h1 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+img{
+  border-radius: 20px;
+  transition: 1s;
+}
+
+img:hover{
+  width: 110%;
+}
+
 
 form{
   display: flex;
@@ -47,7 +54,8 @@ form{
   border: none;
   border-radius: 20px;
 
-  background-color: white;
+  background-color: black;
+  color: white;
 
   padding: 0.5vh;
   width: 20%;
@@ -61,6 +69,7 @@ form{
   border: none;
 
   height: 2vh;
+  background-color: rgba(0, 0, 0, 0.27);
 }
 
 
@@ -93,4 +102,13 @@ section{
   font-weight: bold;
 }
 
+.dark-mode{
+  background-color: black;
+  color: white;
+}
+
+.button-dark-mode{
+  background-color: white;
+  color: black;
+}
   

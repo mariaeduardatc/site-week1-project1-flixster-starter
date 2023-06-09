@@ -21,9 +21,8 @@ async function getMovies(){
 
 async function getSearchedMovie(userInput){
     try{
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie${searchTerm}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
-
-        `${GIPHY_API_BASE_URL}?q=${searchTerm}&limit=${numResults}&offset=${offset}&api_key=${apiKey}`
+        // movieId -> how to get this from the name of the movie??
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie/${movieId}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
         const jsonData = await response.json()
 
         if (jsonData.results.original_title == userInput){
@@ -96,6 +95,30 @@ async function searchMovie(event){
     generateCards(searchResults)
 }
 
+const modeButton = document.getElementById("dark-mode")
+
+function darkMode(){
+    let element = document.body
+    let header = document.querySelector('header')
+    let buttonSearch = document.querySelector('#search-button')
+    let moreButton = document.querySelector('#show-more-button')
+    let movieSearch = document.getElementById('movie-search')
+
+    element.classList.toggle("dark-mode")
+    header.classList.toggle("dark-mode")
+    // buttonSearch.classList.toggle("button-dark-mode")
+    // moreButton.classList.toggle("button-dark-mode")
+    // movieSearch.classList.toggle("dark-mode")
+
+    // buttonSearch.style.backgroundColor ='white'
+    // buttonSearch.style.color ='black'
+
+    // moreButton.style.backgroundColor ='white'
+    // moreButton.style.color ='black'
+
+    // movieSearch.style.backgroundColor ='white'
+}
+
 
 window.onload = function () {
     // calling functions
@@ -103,4 +126,6 @@ window.onload = function () {
     
     showMoreBtn.addEventListener("click", getMovies)
     //userForm.addEventListener("submit", searchMovie)
+
+    modeButton.addEventListener('click', darkMode)
   }
