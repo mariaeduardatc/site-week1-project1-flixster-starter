@@ -1,14 +1,15 @@
 
 const showMoreBtn = document.getElementById("show-more-button")
 
-const state = {
-    searchTerm:"",
-}
+let apiPage = 1
+
+let searchTerm = "" 
+
   
 
 async function getMovies(){
     try{
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=d533a25d73d9a6daf34cebdc1a117229`)
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${apiPage}&api_key=d533a25d73d9a6daf34cebdc1a117229`) // add pages
         const jsonData = await response.json()
         console.log('hi testing')
         for (let i = 0; i < jsonData.results.length; i++){
@@ -22,7 +23,7 @@ async function getMovies(){
 async function getSearchedMovie(userInput){
     try{
         // movieId -> how to get this from the name of the movie??
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie/${movieId}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${userInput}`)
         const jsonData = await response.json()
 
         if (jsonData.results.original_title == userInput){
@@ -102,21 +103,16 @@ function darkMode(){
     let header = document.querySelector('header')
     let buttonSearch = document.querySelector('#search-button')
     let moreButton = document.querySelector('#show-more-button')
+    let darkButton = document.querySelector('#dark-mode')
     let movieSearch = document.getElementById('movie-search')
 
     element.classList.toggle("dark-mode")
     header.classList.toggle("dark-mode")
-    // buttonSearch.classList.toggle("button-dark-mode")
-    // moreButton.classList.toggle("button-dark-mode")
-    // movieSearch.classList.toggle("dark-mode")
+    buttonSearch.classList.toggle("button-dark-mode")
+    moreButton.classList.toggle("button-dark-mode")
+    darkButton.classList.toggle("button-dark-mode")
+    movieSearch.classList.toggle("button-dark-mode")
 
-    // buttonSearch.style.backgroundColor ='white'
-    // buttonSearch.style.color ='black'
-
-    // moreButton.style.backgroundColor ='white'
-    // moreButton.style.color ='black'
-
-    // movieSearch.style.backgroundColor ='white'
 }
 
 
@@ -124,7 +120,10 @@ window.onload = function () {
     // calling functions
     getMovies()
     
-    showMoreBtn.addEventListener("click", getMovies)
+    showMoreBtn.addEventListener("click", ()=>{
+        apiPage++;
+        getMovies()
+    })
     //userForm.addEventListener("submit", searchMovie)
 
     modeButton.addEventListener('click', darkMode)
