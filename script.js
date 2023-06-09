@@ -6,10 +6,11 @@ const state = {
 }
   
 
-async function getMovies(searchTerm){
+async function getMovies(){
     try{
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie${searchTerm}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=d533a25d73d9a6daf34cebdc1a117229`)
         const jsonData = await response.json()
+        console.log('hi testing')
         for (let i = 0; i < jsonData.results.length; i++){
             generateCards(jsonData.results[i])
         }
@@ -98,8 +99,8 @@ async function searchMovie(event){
 
 window.onload = function () {
     // calling functions
-    getMovies(state.searchTerm)
+    getMovies()
     
     showMoreBtn.addEventListener("click", getMovies)
-    userForm.addEventListener("submit", searchMovie)
+    //userForm.addEventListener("submit", searchMovie)
   }
