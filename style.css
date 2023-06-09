@@ -110,3 +110,27 @@ section{
   color: black;
 }
   
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.modal-container.visible {
+  display: flex;
+}
+
+.modal-container .modal {
+  height: 35%;
+  width: 30%;
+  background-color: white;
+}
