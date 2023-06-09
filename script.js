@@ -129,6 +129,7 @@ function populatingModal(movieObject){
     let modalCards = generateCards(movieObject)
     let modalContainer = document.getElementById('modal')
     modalContainer.appendChild(modalCards)
+    console.log('populating modal')
 }
 
 
@@ -146,7 +147,7 @@ window.onload = function () {
     modeButton.addEventListener('click', darkMode)
 
 
-    // adding visisbility to the modal when we click the modal button
+    // adding visisbility to the modal when we click the search button
     buttonSearch.addEventListener('click', () => {
         modalContainer.classList.add('visible')
     })
@@ -154,12 +155,15 @@ window.onload = function () {
     // making the modal invisible when we click outside the modal
     modalContainer.addEventListener('click', () => {
         modalContainer.classList.remove('visible')
+        modal.innerHTML = ''
         console.log('closing modal')
     })
 
     // // making the modal invisible when we click the 'x' button on the modal
     closeModalSymbol.addEventListener('click', () => {
         modalContainer.classList.remove('visible')
+        modal.innerHTML = ''
+        console.log('closing modal')
     })
 
     modal.addEventListener('click', (e) => {

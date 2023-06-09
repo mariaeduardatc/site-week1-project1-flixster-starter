@@ -110,28 +110,52 @@ section{
   color: black;
 }
   
-.modal{
-  display: flex;
-}
+
 .modal-container {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  height: 50vh;
+  height: 90vh;
   width: 90%;
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+
+  overflow: scroll;
 }
+
 
 .modal-container.visible {
   display: flex;
+  margin: 100px;
+  border-radius: 30px;
 }
 
 .modal-container .modal {
-  height: 35%;
-  width: 30%;
+  width: 90%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/4)), 1fr));
+
+  padding: 50px;
+  border-radius: 30px;
+
+  margin: 50px;
   background-color: white;
+
+  overflow: scroll;
+}
+
+#close-modal-symbol{
+  border: none;
+  border-radius: 30px;
+  color: black;
+  background-color: white;
+  padding: 20px;
+
+  margin-bottom: 40vh;
+}
+
+.modal section img{
+  width: 50%;
 }
