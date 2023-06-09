@@ -45,17 +45,24 @@ function generateCards(movieObject){
    moviesContainer.appendChild(avgContainer)
    moviesContainer.appendChild(name)
 
-   let generalContainer = document.getElementById('general-container')
-   generalContainer.appendChild(moviesContainer)
+   return moviesContainer
 
 }
+
+function populatingMain(movieObject){
+    let cards = generateCards(movieObject)
+    let generalContainer = document.getElementById('general-container')
+    generalContainer.appendChild(cards)
+}
+
+
 
 async function getMovies(){
     try{
         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${apiPage}&api_key=d533a25d73d9a6daf34cebdc1a117229`) // add pages
         const jsonData = await response.json()
         for (let i = 0; i < jsonData.results.length; i++){
-            generateCards(jsonData.results[i])
+            populatingMain(jsonData.results[i])
         }
     } catch (error){
         console.log(error)
@@ -70,7 +77,7 @@ async function getSearchedMovie(userInput){
         const jsonData = await response.json() 
         
         for (let i = 0; i < jsonData.results.length; i++){
-            generateCards(jsonData.results[i])
+            populatingModal(jsonData.results[i])
         }
  
     } catch (error){
@@ -118,7 +125,11 @@ const modalContainer = document.getElementById('modal-container')
 const modal = document.getElementById('modal')
 const closeModalSymbol = document.getElementById('close-modal-symbol')
 
-
+function populatingModal(movieObject){
+    let modalCards = generateCards(movieObject)
+    let modalContainer = document.getElementById('modal')
+    modalContainer.appendChild(modalCards)
+}
 
 
 window.onload = function () {
