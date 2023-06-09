@@ -1,21 +1,15 @@
-const pageSize = 9
 
 const showMoreBtn = document.getElementById("show-more-button")
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTMzYTI1ZDczZDlhNmRhZjM0Y2ViZGMxYTExNzIyOSIsInN1YiI6IjY0ODIwNWFkOTkyNTljMDBlMmYzOTAxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ww6Nz24xg6uTjHrTgH9MXvJKReeG3fHh-C3fjlU-fEM'
-    }
-    };
-    
+const state = {
+    searchTerm:"",
+}
+  
 
-async function getMovies(){
+async function getMovies(searchTerm){
     try{
-        const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=d533a25d73d9a6daf34cebdc1a117229')
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie${searchTerm}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
         const jsonData = await response.json()
-        console.log(jsonData.results)
         for (let i = 0; i < jsonData.results.length; i++){
             generateCards(jsonData.results[i])
         }
@@ -24,7 +18,22 @@ async function getMovies(){
     }
 }
 
+async function getSearchedMovie(userInput){
+    try{
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie${searchTerm}?api_key=d533a25d73d9a6daf34cebdc1a117229`)
 
+        `${GIPHY_API_BASE_URL}?q=${searchTerm}&limit=${numResults}&offset=${offset}&api_key=${apiKey}`
+        const jsonData = await response.json()
+
+        if (jsonData.results.original_title == userInput){
+            generateCards(jsonData.results)
+
+        }
+    } catch (error){
+        console.log(error)
+    }
+
+}
 
 function generateCards(movieObject){
     // create star emoji
@@ -70,28 +79,27 @@ function generateCards(movieObject){
    const generalContainer = document.getElementById('general-container')
    generalContainer.appendChild(moviesContainer)
 
-   // creating the button to generate more movies
-   let moreMoviesButton = document.createElement('button')
-   moreMoviesButton.classList.add('moreMoviesButton')
-
-   
-
-
 }
 
-getMovies()
+// generating movies based on users input
+let userForm = document.querySelector('#form')
+let userInput = document.querySelector('#movie-search')
 
 
-// async function handleShowMore(event) {
-//     const results = await getMovies()
-//     displayResults(results)
-//     state.apiPage += 1
-//     console.log('button working')
-//   }
+async function searchMovie(event){
+    // if not explicitly handled default action should not be taken
+    event.preventDefault()
 
-// window.onload = function () {
-//     const movies = getMovies() // how to get the movies from here? use foreach??
-//     displayResults(movies)
+    state.searchTerm = searchInput.value
+    const searchResults = await getSearchedMovie(state.searchTerm)
+    generateCards(searchResults)
+}
+
+
+window.onload = function () {
+    // calling functions
+    getMovies(state.searchTerm)
     
-//     showMoreBtn.addEventListener("click", handleShowMore)
-//   }
+    showMoreBtn.addEventListener("click", getMovies)
+    userForm.addEventListener("submit", searchMovie)
+  }
