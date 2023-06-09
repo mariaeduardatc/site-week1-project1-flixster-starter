@@ -153,7 +153,9 @@ section{
   background-color: white;
   padding: 20px;
 
-  margin-bottom: 40vh;
+  /* margin-bottom: 40vh; */
+
+  margin: 10px;
 }
 
 .modal section img{

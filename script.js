@@ -10,7 +10,7 @@ function generateCards(movieObject){
    star.classList.add('star')
    let starContent = document.createTextNode("⭐️")
    star.appendChild(starContent)
-
+   
    // create rating
    let rating = document.createElement('span')
    rating.classList.add('rating')
@@ -28,7 +28,7 @@ function generateCards(movieObject){
    // create the image
    let image = document.createElement('img')
    image.src = "https://image.tmdb.org/t/p/w342/" + movieObject?.poster_path
-   // document.body.insertBefore(image, avgContainer)
+   image.alt = movieObject?.original_title.toString()
 
    // create the name of the movie
    let name = document.createElement('div')
