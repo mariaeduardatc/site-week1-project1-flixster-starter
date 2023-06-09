@@ -75,7 +75,10 @@ button{
 
 section{
   margin-bottom: 2vh;
-  
+}
+
+.name{
+  width: 80%;
 }
 
 #general-container{

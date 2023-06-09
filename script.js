@@ -2,39 +2,7 @@
 const showMoreBtn = document.getElementById("show-more-button")
 
 let apiPage = 1
-
 let searchTerm = "" 
-
-  
-
-async function getMovies(){
-    try{
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${apiPage}&api_key=d533a25d73d9a6daf34cebdc1a117229`) // add pages
-        const jsonData = await response.json()
-        console.log('hi testing')
-        for (let i = 0; i < jsonData.results.length; i++){
-            generateCards(jsonData.results[i])
-        }
-    } catch (error){
-        console.log(error)
-    }
-}
-
-async function getSearchedMovie(userInput){
-    try{
-        // movieId -> how to get this from the name of the movie??
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${userInput}`)
-        const jsonData = await response.json()
-
-        if (jsonData.results.original_title == userInput){
-            generateCards(jsonData.results)
-
-        }
-    } catch (error){
-        console.log(error)
-    }
-
-}
 
 function generateCards(movieObject){
     // create star emoji
@@ -82,6 +50,35 @@ function generateCards(movieObject){
 
 }
 
+async function getMovies(){
+    try{
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${apiPage}&api_key=d533a25d73d9a6daf34cebdc1a117229`) // add pages
+        const jsonData = await response.json()
+        for (let i = 0; i < jsonData.results.length; i++){
+            generateCards(jsonData.results[i])
+        }
+    } catch (error){
+        console.log(error)
+    }
+}
+
+async function getSearchedMovie(userInput){
+
+    try{
+        // movieId -> how to get this from the name of the movie??
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${userInput}`)
+        const jsonData = await response.json()
+        
+        generateCards(jsonData.results)
+ 
+    } catch (error){
+        console.log(error)
+    }
+
+}
+
+
+
 // generating movies based on users input
 let userForm = document.querySelector('#form')
 let userInput = document.querySelector('#movie-search')
@@ -91,9 +88,8 @@ async function searchMovie(event){
     // if not explicitly handled default action should not be taken
     event.preventDefault()
 
-    state.searchTerm = searchInput.value
-    const searchResults = await getSearchedMovie(state.searchTerm)
-    generateCards(searchResults)
+    searchTerm = userInput.value
+    await getSearchedMovie(searchTerm)
 }
 
 const modeButton = document.getElementById("dark-mode")
@@ -124,7 +120,8 @@ window.onload = function () {
         apiPage++;
         getMovies()
     })
-    //userForm.addEventListener("submit", searchMovie)
+
+    userForm.addEventListener("submit", searchMovie)
 
     modeButton.addEventListener('click', darkMode)
   }
