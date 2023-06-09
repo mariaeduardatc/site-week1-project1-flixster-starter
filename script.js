@@ -1,4 +1,4 @@
-let showMoreBtn = document.getElementById("show-more-button")
+let showMoreBtn = document.getElementById("load-more-movies-btn")
 
 let apiPage = 1
 let searchTerm = "" 
@@ -19,7 +19,7 @@ function generateCards(movieObject){
 
    // create div for rating card
    let avgContainer = document.createElement('div')
-   avgContainer.classList.add('average')
+   avgContainer.classList.add('movie-votes')
    avgContainer.appendChild(star)
    avgContainer.appendChild(rating)
 
@@ -27,18 +27,19 @@ function generateCards(movieObject){
 
    // create the image
    let image = document.createElement('img')
+   image.classList.add('movie-poster')
    image.src = "https://image.tmdb.org/t/p/w342/" + movieObject?.poster_path
    image.alt = movieObject?.original_title.toString()
 
    // create the name of the movie
    let name = document.createElement('div')
-   name.classList.add('name')
+   name.classList.add('movie-title')
    name.innerText = movieObject?.original_title
    // document.body.insertBefore(name, avgContainer.nextElementSibling) // like an insertAfter thing
 
    // create the section for the movies
    let moviesContainer = document.createElement('section')
-   moviesContainer.classList.add('moviesContainer')
+   moviesContainer.classList.add('movie-card')
 
    // adding image, avgContainer and name to moviesContainer
    moviesContainer.appendChild(image)
@@ -51,7 +52,7 @@ function generateCards(movieObject){
 
 function populatingMain(movieObject){
     let cards = generateCards(movieObject)
-    let generalContainer = document.getElementById('general-container')
+    let generalContainer = document.getElementById('movies-grid')
     generalContainer.appendChild(cards)
 }
 
@@ -91,23 +92,21 @@ const modeButton = document.getElementById("dark-mode")
 let element = document.body
 let header = document.querySelector('header')
 let buttonSearch = document.querySelector('#search-button')
-let moreButton = document.querySelector('#show-more-button')
 let darkButton = document.querySelector('#dark-mode')
-let movieSearch = document.getElementById('movie-search')
+let userInput = document.querySelector('#search-input')
 
 function darkMode(){
     element.classList.toggle("dark-mode")
     header.classList.toggle("dark-mode")
     buttonSearch.classList.toggle("button-dark-mode")
-    moreButton.classList.toggle("button-dark-mode")
+    showMoreBtn.classList.toggle("button-dark-mode")
     darkButton.classList.toggle("button-dark-mode")
-    movieSearch.classList.toggle("button-dark-mode")
+    userInput.classList.toggle("button-dark-mode")
 
 }
 
 // generating movies based on users input
 let userForm = document.querySelector('#form')
-let userInput = document.querySelector('#movie-search')
 
 
 async function searchMovie(event){
@@ -123,7 +122,7 @@ async function searchMovie(event){
 // vars getting info from HTML
 const modalContainer = document.getElementById('modal-container')
 const modal = document.getElementById('modal')
-const closeModalSymbol = document.getElementById('close-modal-symbol')
+const closeModalSymbol = document.getElementById('close-search-btn')
 
 function populatingModal(movieObject){
     let modalCards = generateCards(movieObject)
