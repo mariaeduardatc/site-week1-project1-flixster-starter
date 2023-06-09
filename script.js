@@ -1,10 +1,11 @@
-
-const showMoreBtn = document.getElementById("show-more-button")
+let showMoreBtn = document.getElementById("show-more-button")
 
 let apiPage = 1
 let searchTerm = "" 
 
 function generateCards(movieObject){
+
+    console.log('testin function')
     // create star emoji
    let star = document.createElement('span')
    star.classList.add('star')
@@ -14,7 +15,7 @@ function generateCards(movieObject){
    // create rating
    let rating = document.createElement('span')
    rating.classList.add('rating')
-   let ratingContent = document.createTextNode(movieObject.vote_average)
+   let ratingContent = document.createTextNode(movieObject?.vote_average)
    rating.appendChild(ratingContent)
 
    // create div for rating card
@@ -27,13 +28,14 @@ function generateCards(movieObject){
 
    // create the image
    let image = document.createElement('img')
-   image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
+   console.log(movieObject)
+   image.src = "https://image.tmdb.org/t/p/w342/" + movieObject?.poster_path
    // document.body.insertBefore(image, avgContainer)
 
    // create the name of the movie
    let name = document.createElement('div')
    name.classList.add('name')
-   name.innerText = movieObject.original_title
+   name.innerText = movieObject?.original_title
    // document.body.insertBefore(name, avgContainer.nextElementSibling) // like an insertAfter thing
 
    // create the section for the movies
@@ -45,7 +47,7 @@ function generateCards(movieObject){
    moviesContainer.appendChild(avgContainer)
    moviesContainer.appendChild(name)
 
-   const generalContainer = document.getElementById('general-container')
+   let generalContainer = document.getElementById('general-container')
    generalContainer.appendChild(moviesContainer)
 
 }
@@ -66,30 +68,17 @@ async function getSearchedMovie(userInput){
 
     try{
         // movieId -> how to get this from the name of the movie??
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${userInput}`)
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=d533a25d73d9a6daf34cebdc1a117229&language=en-US&query=${userInput}`)
         const jsonData = await response.json()
         
-        generateCards(jsonData.results)
+        for (let i = 0; i < jsonData.results.length; i++){
+            generateCards(jsonData.results[i])
+        }
  
     } catch (error){
         console.log(error)
     }
 
-}
-
-
-
-// generating movies based on users input
-let userForm = document.querySelector('#form')
-let userInput = document.querySelector('#movie-search')
-
-
-async function searchMovie(event){
-    // if not explicitly handled default action should not be taken
-    event.preventDefault()
-
-    searchTerm = userInput.value
-    await getSearchedMovie(searchTerm)
 }
 
 const modeButton = document.getElementById("dark-mode")
@@ -111,6 +100,21 @@ function darkMode(){
 
 }
 
+// generating movies based on users input
+let userForm = document.querySelector('#form')
+let userInput = document.querySelector('#movie-search')
+
+
+async function searchMovie(event){
+    // if not explicitly handled default action should not be taken
+    event.preventDefault()
+
+    const searchTerm = userInput.value
+    // console.log('test:', searchTerm)
+    await getSearchedMovie(searchTerm)
+}
+
+
 
 window.onload = function () {
     // calling functions
@@ -121,7 +125,10 @@ window.onload = function () {
         getMovies()
     })
 
-    userForm.addEventListener("submit", searchMovie)
+    userForm.addEventListener("submit", ()=>{
+        generalContainer.innerHTML= "",
+        searchMovie()
+    })
 
     modeButton.addEventListener('click', darkMode)
   }
