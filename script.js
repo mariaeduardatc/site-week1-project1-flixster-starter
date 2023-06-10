@@ -153,10 +153,6 @@ function popUp(overview, original_title){
 }
 
 
-
-
-
-
 window.onload = function () {
     getMovies()
     
