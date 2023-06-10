@@ -2,11 +2,11 @@
 
 ## Week 1 Assignment: Flixster
 
-Submitted by: **NAME**
+Submitted by: **Maria Eduarda Tavora Carneiro**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **6** hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://mariaeduardatc.github.io/site-week1-project1-flixster-starter/)
 
 ### Application Features
 
@@ -44,7 +44,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTI4ZWZhYzU2YTlhOGJkN2UwMDlkMTMxNzI1Mzg2N2FiM2RkMjVlZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/1NafMT7u810517lDVq/giphy-downsized-large.gif">
 
 ### Reflection
 
