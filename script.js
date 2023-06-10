@@ -31,6 +31,15 @@ function generateCards(movieObject){
    image.src = "https://image.tmdb.org/t/p/w342/" + movieObject?.poster_path
    image.alt = movieObject?.original_title.toString()
 
+   image.addEventListener('click', () => {
+            console.log('imagem click')
+            console.log(movieObject?.overview)
+            popUp(movieObject.overview, movieObject.original_title)
+            modalContainer.classList.add('visible')
+            
+        }  
+    )
+
    // create the name of the movie
    let name = document.createElement('div')
    name.classList.add('movie-title')
@@ -131,9 +140,24 @@ function populatingModal(movieObject){
     console.log('populating modal')
 }
 
+function popUp(overview, original_title){
+    let movieInfo = document.createTextNode(overview)
+    let movieTitle = document.createTextNode(original_title)
+    const lineBreak = document.createElement('br');
+
+    let popUpContainer = document.getElementById('modal')
+
+    popUpContainer.appendChild(movieTitle)
+    popUpContainer.appendChild(lineBreak)
+    popUpContainer.appendChild(movieInfo)
+}
+
+
+
+
+
 
 window.onload = function () {
-    // calling functions
     getMovies()
     
     showMoreBtn.addEventListener("click", ()=>{
@@ -168,4 +192,6 @@ window.onload = function () {
     modal.addEventListener('click', (e) => {
         e.stopPropagation()
     })
+
+    
   }

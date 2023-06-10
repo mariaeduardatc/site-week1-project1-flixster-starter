@@ -41,6 +41,7 @@ img{
 
 img:hover{
   width: 110%;
+  cursor: pointer;
 }
 
 
@@ -199,4 +200,8 @@ button{
 
 .modal section img{
   width: 50%;
+}
+
+.movie-info{
+  color: red;
 }
