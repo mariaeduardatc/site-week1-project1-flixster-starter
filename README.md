@@ -42,23 +42,23 @@ Deployed Application (optional): [Flixster Deployed Site](https://mariaeduardatc
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
+![Screen_Recording_2023-06-09_at_7_01_50_PM_AdobeExpress](https://github.com/mariaeduardatc/site-week1-project1-flixster-starter/assets/81043486/ad5e9c3a-34f1-45e0-a25a-a832b93abd5a)
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTI4ZWZhYzU2YTlhOGJkN2UwMDlkMTMxNzI1Mzg2N2FiM2RkMjVlZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/1NafMT7u810517lDVq/giphy-downsized-large.gif">
+(I haven't figured out how to make the gif bigger, so here is its link https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGNiM2U0NTM3OWU0NGY1N2Q0NjcwNGFkMGQ2YzJiMGY0NGUwNGZlOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/wDVLv1elQ6wOVE2OAh/giphy-downsized-large.gif)
 
 ### Reflection
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+The labs gave me a basic understanding of some aspects for the final project. One topic really well covered was how to create HTML elements dinamically in JavaScript. I struggled a bit on how to properly use the data from the API. At first it was hard to work with its response and json, but after this main aspect was clear, the rest was somewhat faster to figure out. 
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time I would make the website more responsive, and the modals more aesthetically pleasing. I would also love to create a favorites page so the user could go further in using the website's information.
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I believe I did the data fetching well, but I thought my code would be cleaner than it is right now. I thought we would have more time to work on the project, but we got a bit caught up on other activities from the first week of the internship. Next time, I would like to try to generate responses to the user's search as they type on the input line, and not only when they hit submit.
 
 ### Open-source libraries used
 
