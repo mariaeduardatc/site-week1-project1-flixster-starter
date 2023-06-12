@@ -44,7 +44,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://mariaeduardatc
 
 ![Screen_Recording_2023-06-09_at_7_01_50_PM_AdobeExpress](https://github.com/mariaeduardatc/site-week1-project1-flixster-starter/assets/81043486/ad5e9c3a-34f1-45e0-a25a-a832b93abd5a)
 
-(I haven't figured out how to make the gif bigger, so here is its link https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGNiM2U0NTM3OWU0NGY1N2Q0NjcwNGFkMGQ2YzJiMGY0NGUwNGZlOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/wDVLv1elQ6wOVE2OAh/giphy-downsized-large.gif)
+(I haven't figured out how to make the gif bigger, so here is its link https://giphy.com/gifs/J6uKlHAP53jU0sTFG8)
 
 ### Reflection
 
